@@ -1,70 +1,84 @@
 @import 'tailwindcss';
+@theme {
+  --color-primary: #0087ba;         
+  --color-primary-hover: #009dd8;    
+  --color-secondary: #00aeef;        
+  --color-secondary-hover: #6dc7ff;  
+  --color-accent: #bde1ff;           
+  --color-background: #e5f2ff;       
+  --color-text-dark: #002030;        
+  --color-text-light: #ffffff;       
+  --color-border: #6dc7ff;
+  --color-navbar: #0087ba;      /* Mantén tu primario */
+  --color-footer: #002030;        
+}
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+ 
+/* Personaliza el tamaño de la scrollbar */
+::-webkit-scrollbar {
+  width: 7px; /* Para la barra vertical */
+  height: 7px; /* Para la barra horizontal */
+}
+
+/* Personaliza el fondo de la scrollbar */
+::-webkit-scrollbar-track {
+  background: #e5f2ff;
+  border-radius: 10px;
+}
+
+/* Personaliza el pulgar (thumb) de la scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #0a1626;
+  border-radius: 10px;
+}
+
+/* Cambiar color del pulgar al pasar el mouse */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Estilos para las listas dentro del contenido del blog */
+.text-gray-700 ol {
+  list-style-type: decimal; /* Para mostrar números */
+  padding-left: 1.5em; /* Para la indentación */
+}
+
+.text-gray-700 ul {
+  list-style-type: disc; /* Para mostrar viñetas */
+  padding-left: 1.5em;
+}
+
+.text-gray-700 li {
+  margin-bottom: 0.5em;
   line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.text-gray-700 li::marker {
+  font-weight: bold;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* Estilos para la alineación de texto de ReactQuill */
+.ql-align-center {
+  text-align: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.ql-align-right {
+  text-align: right;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.ql-align-justify {
+  text-align: justify;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Estilos para los diferentes tamaños de fuente de ReactQuill */
+.ql-size-small {
+  font-size: 0.75em; /* Aproximadamente 12px */
+}
+
+.ql-size-large {
+  font-size: 1.5em; /* Aproximadamente 24px */
+}
+
+.ql-size-huge {
+  font-size: 2.5em; /* Aproximadamente 40px */
 }
