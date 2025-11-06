@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className="bg-navbar shadow-md sticky top-0 z-50">
+    <header className="bg-primary shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
           <Activity className="h-8 w-8 text-white" />

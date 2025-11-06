@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @theme {
-  --color-primary: #0087ba;         
+  --color-primary: #12B0E3;         
   --color-primary-hover: #009dd8;    
   --color-secondary: #00aeef;        
   --color-secondary-hover: #6dc7ff;  
@@ -9,7 +9,6 @@
   --color-text-dark: #002030;        
   --color-text-light: #ffffff;       
   --color-border: #6dc7ff;
-  --color-navbar: #0087ba;      /* Mantén tu primario */
   --color-footer: #002030;        
 }
 

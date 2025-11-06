@@ -29,7 +29,7 @@ const CTASection = ({
   secondaryButtonLink = "/contact",
   showIcon = false,
   showSecondaryButton = false,
-  backgroundColor = "bg-navbar",
+  backgroundColor = "bg-primary",
   textColor = "text-text-light"
 }: CTASectionProps) => {
   return (
