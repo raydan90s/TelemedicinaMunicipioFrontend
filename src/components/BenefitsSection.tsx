@@ -1,11 +1,4 @@
-import type { LucideIcon } from "lucide-react";
-
-interface Benefit {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  color: string; // Color específico para cada beneficio (usar nombres de variables)
-}
+import type { Benefit } from "@models/types"
 
 interface BenefitsSectionProps {
   title: string;
@@ -18,7 +11,7 @@ const BenefitsSection = ({ title, subtitle, benefits }: BenefitsSectionProps) =>
     <section className="py-4 md:py-12">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-text-dark">
             {title}
           </h2>

@@ -22,17 +22,17 @@ const Navbar = () => {
           </Link>
 
           <Link
-            to="/schedule"
+            to="/servicio"
             className="relative text-sm font-medium text-white/90 before:content-[''] before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:w-0 before:bg-white before:transition-all hover:before:w-full"
           >
-            Agendar Cita
+            Servicio
           </Link>
 
           <Link
-            to="/auth"
+            to="/guia"
             className="relative text-sm font-medium text-white/90 before:content-[''] before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:w-0 before:bg-white before:transition-all hover:before:w-full"
           >
-            Mi Perfil
+            Guía
           </Link>
         </nav>
 
@@ -45,10 +45,10 @@ const Navbar = () => {
           </Link>
 
           <Link
-            to="/schedule"
+            to="/registro"
             className="bg-white text-primary hover:bg-white/90 font-semibold shadow-md px-4 py-2 rounded-md text-sm"
           >
-            Agendar Cita
+            Crear Cuenta
           </Link>
         </div>
       </div>
