@@ -38,7 +38,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <Link
-            to="/auth"
+            to="/iniciar-sesion"
             className="hidden md:inline-flex text-white border-2 border-white hover:bg-white hover:text-primary transition-all px-4 py-2 rounded-md text-sm font-medium"
           >
             Ingresar

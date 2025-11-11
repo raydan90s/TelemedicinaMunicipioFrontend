@@ -27,7 +27,7 @@ const Footer = () => {
               <Link to="/schedule" className="text-text-light hover:text-text-light transition-colors">
                 Agendar Cita
               </Link>
-              <Link to="/auth" className="text-text-light hover:text-text-light transition-colors">
+              <Link to="/iniciar-sesion" className="text-text-light hover:text-text-light transition-colors">
                 Mi Perfil
               </Link>
               <a href="#" className="text-text-light hover:text-text-light transition-colors">

@@ -6,6 +6,8 @@ import Index from "@pages/Home";
 import About from "@pages/About";
 import Guide from "@pages/Guide";
 import NotFound from "@pages/NotFound";
+import Login from "@pages/Login";
+import Registro from "@pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,8 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/servicio" element={<About />} />
               <Route path="/guia" element={<Guide />} />
+              <Route path="/registro" element={<Registro />} />
+              <Route path="/iniciar-sesion" element={<Login />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
