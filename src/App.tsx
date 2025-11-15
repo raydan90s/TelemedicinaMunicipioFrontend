@@ -8,10 +8,12 @@ import Guide from "@pages/Guide";
 import NotFound from "@pages/NotFound";
 import Login from "@pages/Login";
 import Registro from "@pages/Register";
+import { AuthProvider } from "@context/AuthContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
+  <AuthProvider>
   <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <div className="flex flex-col min-h-screen">
@@ -30,6 +32,7 @@ const App = () => (
         </div>
       </BrowserRouter>
   </QueryClientProvider>
+  </AuthProvider>
 );
 
 export default App;

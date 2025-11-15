@@ -1,3 +1,7 @@
+import type { LoginData } from "@models/login";
+import type { RegisterFormData } from "@models/register";
+import type { RegisterFormErrors, LoginFormErrors } from "@models/errors";
+
 export const isFieldEmpty = (value: string): boolean => {
     return !value || value.trim() === "";
 };
@@ -121,16 +125,6 @@ export const getRequiredFieldError = (value: string, fieldName: string): string 
     return undefined;
 };
 
-export const getDateOfBirthError = (date: string): string | undefined => {
-    if (isFieldEmpty(date)) {
-        return "La fecha de nacimiento es requerida";
-    }
-    if (!validateDateOfBirth(date)) {
-        return "Debe ser mayor de 18 años";
-    }
-    return undefined;
-};
-
 export const getConfirmPasswordError = (password: string, confirmPassword: string): string | undefined => {
     if (isFieldEmpty(confirmPassword)) {
         return "Confirme su contraseña";
@@ -141,22 +135,10 @@ export const getConfirmPasswordError = (password: string, confirmPassword: strin
     return undefined;
 };
 
-
-export interface LoginFormData {
-    email: string;
-    password: string;
-}
-
-export interface LoginFormErrors {
-    email?: string;
-    password?: string;
-    submit?: string;
-}
-
-export const validateLoginForm = (data: LoginFormData): LoginFormErrors => {
+export const validateLoginForm = (data: LoginData): LoginFormErrors => {
     const errors: LoginFormErrors = {};
 
-    const emailError = getEmailError(data.email);
+    const emailError = getEmailError(data.identifier);
     const passwordError = getPasswordError(data.password, 6);
 
     if (emailError) errors.email = emailError;
@@ -165,28 +147,6 @@ export const validateLoginForm = (data: LoginFormData): LoginFormErrors => {
     return errors;
 };
 
-export interface RegisterFormData {
-    cedula: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    primer_nombre: string;
-    primer_apellido: string;
-    fecha_nacimiento: string;
-    numero_celular?: string;
-}
-
-export interface RegisterFormErrors {
-    cedula?: string;
-    email?: string;
-    password?: string;
-    confirmPassword?: string;
-    primer_nombre?: string;
-    primer_apellido?: string;
-    fecha_nacimiento?: string;
-    numero_celular?: string;
-    submit?: string;
-}
 
 export const validateRegisterForm = (data: RegisterFormData): RegisterFormErrors => {
     const errors: RegisterFormErrors = {};
@@ -195,9 +155,8 @@ export const validateRegisterForm = (data: RegisterFormData): RegisterFormErrors
     const emailError = getEmailError(data.email);
     const passwordError = getPasswordError(data.password, 8);
     const confirmPasswordError = getConfirmPasswordError(data.password, data.confirmPassword);
-    const primerNombreError = getRequiredFieldError(data.primer_nombre, "El primer nombre");
-    const primerApellidoError = getRequiredFieldError(data.primer_apellido, "El primer apellido");
-    const fechaNacimientoError = getDateOfBirthError(data.fecha_nacimiento);
+    const primerNombreError = getRequiredFieldError(data.primerNombre, "El primer nombre");
+    const primerApellidoError = getRequiredFieldError(data.primerApellido, "El primer apellido");
 
     if (cedulaError) errors.cedula = cedulaError;
     if (emailError) errors.email = emailError;
@@ -205,10 +164,9 @@ export const validateRegisterForm = (data: RegisterFormData): RegisterFormErrors
     if (confirmPasswordError) errors.confirmPassword = confirmPasswordError;
     if (primerNombreError) errors.primer_nombre = primerNombreError;
     if (primerApellidoError) errors.primer_apellido = primerApellidoError;
-    if (fechaNacimientoError) errors.fecha_nacimiento = fechaNacimientoError;
 
-    if (data.numero_celular) {
-        const phoneError = getPhoneError(data.numero_celular, false);
+    if (data.numeroCelular) {
+        const phoneError = getPhoneError(data.numeroCelular, false);
         if (phoneError) errors.numero_celular = phoneError;
     }
 

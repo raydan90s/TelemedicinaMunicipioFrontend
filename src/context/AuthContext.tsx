@@ -1,6 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { authService } from '@services/auth.service';
+import type { RegisterData } from '@models/register';
 
 interface Usuario {
     id: number;
@@ -23,28 +24,7 @@ interface AuthContextType {
     hasRole: (role: string) => boolean;
 }
 
-interface RegisterData {
-    cedula: string;
-    email: string;
-    password: string;
-    primer_nombre: string;
-    segundo_nombre?: string;
-    primer_apellido: string;
-    segundo_apellido?: string;
-    genero_id: number;
-    tipo_usuario: 'paciente' | 'medico';
-    fecha_nacimiento?: string;
-    numero_celular?: string;
-    pais_id?: number;
-    lugar_residencia?: string;
-    grupo_sanguineo_id?: number;
-    estilo_vida_id?: number;
-    licencia_medica?: string;
-    pasaporte?: string;
-    especialidades?: number[];
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [usuario, setUsuario] = useState<Usuario | null>(null);
@@ -127,12 +107,4 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
-
-export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (context === undefined) {
-        throw new Error('useAuth debe ser usado dentro de un AuthProvider');
-    }
-    return context;
 };

@@ -1,61 +1,7 @@
-interface LoginData {
-    identifier: string;
-    password: string;
-}
+import type { LoginData, LoginResponse } from "@models/login";
+import type { RegisterData, RegisterResponse } from "@models/register"; 
 
-interface LoginResponse {
-    success: boolean;
-    usuario: {
-        id: number;
-        email: string;
-        cedula: string;
-        primer_nombre: string;
-        primer_apellido: string;
-        verificado: boolean;
-    };
-    roles: Record<string, string[]>;
-    token: string;
-    message?: string;
-}
-
-interface RegisterData {
-    cedula: string;
-    email: string;
-    password: string;
-    primer_nombre: string;
-    segundo_nombre?: string;
-    primer_apellido: string;
-    segundo_apellido?: string;
-    genero_id: number;
-    tipo_usuario: 'paciente' | 'medico';
-    // Datos de paciente
-    fecha_nacimiento?: string;
-    numero_celular?: string;
-    pais_id?: number;
-    lugar_residencia?: string;
-    grupo_sanguineo_id?: number;
-    estilo_vida_id?: number;
-    // Datos de médico
-    licencia_medica?: string;
-    pasaporte?: string;
-    especialidades?: number[];
-}
-
-interface RegisterResponse {
-    success: boolean;
-    message: string;
-    usuario: {
-        id: number;
-        email: string;
-        cedula: string;
-        primer_nombre: string;
-        primer_apellido: string;
-        verificado: boolean;
-    };
-    token: string;
-}
-
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const authService = {
     async login(data: LoginData): Promise<LoginResponse> {

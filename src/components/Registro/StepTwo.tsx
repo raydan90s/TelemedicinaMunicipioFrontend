@@ -1,11 +1,11 @@
 import { Calendar, Phone } from "lucide-react";
 import { InputField } from "@components/common/InputField";
 import { SelectField } from "@components/common/SelectField";
-import type { FormData } from "@models/formData";
 import type { Errors } from "@models/errors";
+import type { RegisterFormData } from "@models/register";
 
 interface StepTwoProps {
-  formData: FormData;
+  formData: RegisterFormData;
   errors: Errors;
   generos: { id: number; nombre: string }[];
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
@@ -74,17 +74,6 @@ export const StepTwo = ({ formData, errors, generos, onChange }: StepTwoProps) =
         error={errors.generoId}
       />
 
-      <InputField
-        id="fechaNacimiento"
-        name="fechaNacimiento"
-        type="date"
-        label="Fecha de Nacimiento *"
-        value={formData.fechaNacimiento}
-        onChange={onChange}
-        error={errors.fechaNacimiento}
-        placeholder=""
-        icon={<Calendar className="h-5 w-5 text-gray-400" />}
-      />
 
       <InputField
         id="numeroCelular"

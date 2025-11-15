@@ -1,7 +1,7 @@
-import type { FormData } from "@models/formData";
 import type { Errors } from "@models/errors";
+import type { RegisterFormData } from "@models/register";
 
-export const validateStep1 = (formData: FormData): Errors => {
+export const validateStep1 = (formData: RegisterFormData): Errors => {
   const errors: Errors = {};
 
   if (!formData.cedula) {
@@ -31,7 +31,7 @@ export const validateStep1 = (formData: FormData): Errors => {
   return errors;
 };
 
-export const validateStep2 = (formData: FormData): Errors => {
+export const validateStep2 = (formData: RegisterFormData): Errors => {
   const errors: Errors = {};
 
   if (!formData.primerNombre) {
@@ -46,32 +46,10 @@ export const validateStep2 = (formData: FormData): Errors => {
     errors.generoId = "Seleccione un género";
   }
 
-  if (!formData.fechaNacimiento) {
-    errors.fechaNacimiento = "La fecha de nacimiento es requerida";
-  }
-
   if (!formData.numeroCelular) {
     errors.numeroCelular = "El número de celular es requerido";
   } else if (!/^\d{10}$/.test(formData.numeroCelular)) {
     errors.numeroCelular = "El número debe tener 10 dígitos";
-  }
-
-  return errors;
-};
-
-export const validateStep3 = (formData: FormData): Errors => {
-  const errors: Errors = {};
-
-  if (!formData.lugarResidencia) {
-    errors.lugarResidencia = "El lugar de residencia es requerido";
-  }
-
-  if (!formData.grupoSanguineoId) {
-    errors.grupoSanguineoId = "Seleccione su grupo sanguíneo";
-  }
-
-  if (!formData.estiloVidaId) {
-    errors.estiloVidaId = "Seleccione su estilo de vida";
   }
 
   return errors;

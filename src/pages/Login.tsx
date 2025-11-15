@@ -33,7 +33,7 @@ const Login = () => {
                             name="email"
                             type="email"
                             label="Correo Electrónico"
-                            value={formData.email}
+                            value={formData.identifier}
                             placeholder="correo@ejemplo.com"
                             error={errors.email}
                             onChange={handleChange}

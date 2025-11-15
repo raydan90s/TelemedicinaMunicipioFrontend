@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Mail, CreditCard } from "lucide-react";
 import { InputField } from "@components/common/InputField";
 import { PasswordInput } from "@components/common/PasswordInput";
-import type { FormData } from "@models/formData";
 import type { Errors } from "@models/errors";
+import type { RegisterFormData } from "@models/register";
 
 interface StepOneProps {
-  formData: FormData;
+  formData: RegisterFormData;
   errors: Errors;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

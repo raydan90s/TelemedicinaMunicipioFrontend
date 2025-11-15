@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { validateLoginForm, getEmailError, getPasswordError, type LoginFormErrors } from "@utils/validation";
-import { authService } from "@services/auth.service";
-//AQUI DEBE SER CONTEXT EN LUGAR DE SERVICE
-
-interface FormData {
-    email: string;
-    password: string;
-}
+import { validateLoginForm, getEmailError, getPasswordError } from "@utils/validation";
+import type { LoginFormErrors } from "@models/errors";
+import useAuth from "./useAuth";
 
 export const useLoginForm = () => {
     const navigate = useNavigate();
+    const { login } = useAuth(); 
+    
     const [errors, setErrors] = useState<LoginFormErrors>({});
-    const [formData, setFormData] = useState<FormData>({
-        email: "",
+    const [formData, setFormData] = useState({
+        identifier: "",
         password: "",
     });
     const [showPassword, setShowPassword] = useState(false);
@@ -22,12 +19,15 @@ export const useLoginForm = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        
+        // Mapear 'email' a 'identifier' para mantener consistencia
+        const fieldName = name === 'email' ? 'identifier' : name;
+        setFormData(prev => ({ ...prev, [fieldName]: value }));
 
-        if (touched[name]) {
-            if (name === "email") {
+        if (touched[fieldName]) {
+            if (fieldName === "identifier") {
                 setErrors(prev => ({ ...prev, email: getEmailError(value) }));
-            } else if (name === "password") {
+            } else if (fieldName === "password") {
                 setErrors(prev => ({ ...prev, password: getPasswordError(value, 6) }));
             }
         }
@@ -35,17 +35,18 @@ export const useLoginForm = () => {
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
         const { name } = e.target;
-        setTouched(prev => ({ ...prev, [name]: true }));
+        const fieldName = name === 'email' ? 'identifier' : name;
+        setTouched(prev => ({ ...prev, [fieldName]: true }));
 
-        if (name === "email") {
-            setErrors(prev => ({ ...prev, email: getEmailError(formData.email) }));
-        } else if (name === "password") {
+        if (fieldName === "identifier") {
+            setErrors(prev => ({ ...prev, email: getEmailError(formData.identifier) }));
+        } else if (fieldName === "password") {
             setErrors(prev => ({ ...prev, password: getPasswordError(formData.password, 6) }));
         }
     };
 
     const validateForm = (): boolean => {
-        setTouched({ email: true, password: true });
+        setTouched({ identifier: true, password: true });
         const validationErrors = validateLoginForm(formData);
         setErrors(validationErrors);
         return Object.keys(validationErrors).length === 0;
@@ -59,17 +60,21 @@ export const useLoginForm = () => {
         setErrors({});
 
         try {
-            const data = await authService.login({
-                identifier: formData.email,
-                password: formData.password,
-            });
-
-            authService.saveSession(data);
-
-            const roles = Object.keys(data.roles);
-            if (roles.includes("Médico")) navigate("/dashboard-medico");
-            else if (roles.includes("Paciente")) navigate("/dashboard-paciente");
-            else navigate("/dashboard");
+            // Usar el método login del AuthContext
+            await login(formData.identifier, formData.password);
+            
+            // El AuthContext ya maneja el guardado de la sesión
+            // Ahora solo necesitamos redirigir según el rol
+            const userRoles = JSON.parse(localStorage.getItem('roles') || '{}');
+            const roles = Object.keys(userRoles);
+            
+            if (roles.includes("Médico")) {
+                navigate("/dashboard-medico");
+            } else if (roles.includes("Paciente")) {
+                navigate("/dashboard-paciente");
+            } else {
+                navigate("/dashboard");
+            }
         } catch (error) {
             console.error("Error en login:", error);
             setErrors({
