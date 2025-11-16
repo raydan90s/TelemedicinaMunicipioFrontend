@@ -22,7 +22,7 @@ export interface RegisterData {
   email: string;
   password: string;
   numero_celular?: string;
-  tipo_usuario?: 'paciente' | 'medico';
+  roleCode: string;
 }
 
 export interface RegisterResponse {

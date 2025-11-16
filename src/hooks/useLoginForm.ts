@@ -6,8 +6,9 @@ import useAuth from "./useAuth";
 
 export const useLoginForm = () => {
     const navigate = useNavigate();
-    const { login } = useAuth(); 
-    
+    const [isRedirecting, setIsRedirecting] = useState(false);
+    const { login } = useAuth();
+
     const [errors, setErrors] = useState<LoginFormErrors>({});
     const [formData, setFormData] = useState({
         identifier: "",
@@ -19,8 +20,7 @@ export const useLoginForm = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        
-        // Mapear 'email' a 'identifier' para mantener consistencia
+
         const fieldName = name === 'email' ? 'identifier' : name;
         setFormData(prev => ({ ...prev, [fieldName]: value }));
 
@@ -60,21 +60,30 @@ export const useLoginForm = () => {
         setErrors({});
 
         try {
-            // Usar el método login del AuthContext
-            await login(formData.identifier, formData.password);
+            const userData = await login(formData.identifier, formData.password);
             
-            // El AuthContext ya maneja el guardado de la sesión
-            // Ahora solo necesitamos redirigir según el rol
+            if (!userData.verificado) {
+                setErrors({
+                    submit: "Su cuenta no ha sido verificada. Por favor, revise su correo electrónico para verificar su cuenta.",
+                });
+                setIsLoading(false);
+                return;
+            }
+
+            setIsRedirecting(true);
+
             const userRoles = JSON.parse(localStorage.getItem('roles') || '{}');
             const roles = Object.keys(userRoles);
-            
-            if (roles.includes("Médico")) {
-                navigate("/dashboard-medico");
-            } else if (roles.includes("Paciente")) {
-                navigate("/dashboard-paciente");
-            } else {
-                navigate("/dashboard");
-            }
+
+            setTimeout(() => {
+                if (roles.includes("Médico")) {
+                    navigate("/dashboard-medico");
+                } else if (roles.includes("Paciente")) {
+                    navigate("/dashboard-paciente");
+                } else {
+                    navigate("/dashboard");
+                }
+            }, 1000);
         } catch (error) {
             console.error("Error en login:", error);
             setErrors({
@@ -99,5 +108,6 @@ export const useLoginForm = () => {
         handleBlur,
         handleSubmit,
         togglePasswordVisibility,
+        isRedirecting, 
     };
 };

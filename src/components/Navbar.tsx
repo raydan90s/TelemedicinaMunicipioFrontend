@@ -1,5 +1,5 @@
 import { Activity, ChevronDown, User, LogOut } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import useAuth from "@hooks/useAuth";
 
@@ -7,8 +7,8 @@ const Navbar = () => {
   const { isAuthenticated, usuario, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
-  // Cerrar menú al hacer click fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -23,6 +23,7 @@ const Navbar = () => {
   const handleLogout = () => {
     logout();
     setIsMenuOpen(false);
+    navigate('/');
   };
 
   return (

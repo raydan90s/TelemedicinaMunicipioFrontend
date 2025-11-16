@@ -15,9 +15,22 @@ const Login = () => {
         handleChange,
         handleSubmit,
         togglePasswordVisibility,
-        handleBlur
+        handleBlur,
+        isRedirecting,
     } = useLoginForm();
 
+    if (isRedirecting) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-white">
+                <div className="text-center space-y-4">
+                    <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin mx-auto"></div>
+                    <p className="text-gray-600 text-lg font-semibold">
+                        Cargando, por favor espere...
+                    </p>
+                </div>
+            </div>
+        );
+    }
     return (
         <div className="min-h-screen bg-background flex items-center justify-center">
             <div className="w-full max-w-md">
@@ -37,7 +50,7 @@ const Login = () => {
                             placeholder="correo@ejemplo.com"
                             error={errors.email}
                             onChange={handleChange}
-                            onBlur={handleBlur}   
+                            onBlur={handleBlur}
                             icon={<Mail className="h-5 w-5 text-gray-400" />}
                         />
 
@@ -61,8 +74,8 @@ const Login = () => {
                                 />
                                 <span className="text-gray-600">Recordarme</span>
                             </label>
-                            <Link 
-                                to="/recuperar" 
+                            <Link
+                                to="/recuperar"
                                 className="text-blue-600 hover:underline font-medium"
                             >
                                 ¿Olvidó su contraseña?
@@ -85,8 +98,8 @@ const Login = () => {
                     <div className="mt-6 text-center">
                         <p className="text-gray-600 text-sm">
                             ¿No tiene una cuenta?{" "}
-                            <Link 
-                                to="/registro" 
+                            <Link
+                                to="/registro"
                                 className="text-blue-600 font-semibold hover:underline"
                             >
                                 Crear cuenta

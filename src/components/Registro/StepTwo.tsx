@@ -1,4 +1,4 @@
-import { Calendar, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { InputField } from "@components/common/InputField";
 import { SelectField } from "@components/common/SelectField";
 import type { Errors } from "@models/errors";
@@ -67,7 +67,7 @@ export const StepTwo = ({ formData, errors, generos, onChange }: StepTwoProps) =
       <SelectField
         id="generoId"
         name="generoId"
-        label="Género *"
+        label="Género"
         value={formData.generoId}
         onChange={onChange}
         options={generos}

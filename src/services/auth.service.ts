@@ -1,5 +1,5 @@
 import type { LoginData, LoginResponse } from "@models/login";
-import type { RegisterData, RegisterResponse } from "@models/register"; 
+import type { RegisterData, RegisterResponse } from "@models/register";
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -57,7 +57,6 @@ export const authService = {
 
     saveSession(data: LoginResponse | RegisterResponse) {
         localStorage.setItem('token', data.token);
-        localStorage.setItem('usuario', JSON.stringify(data.usuario));
         if ('roles' in data) {
             localStorage.setItem('roles', JSON.stringify(data.roles));
         }
@@ -65,7 +64,6 @@ export const authService = {
 
     clearSession() {
         localStorage.removeItem('token');
-        localStorage.removeItem('usuario');
         localStorage.removeItem('roles');
     },
 
@@ -80,7 +78,7 @@ export const authService = {
     getUserRoles(): string[] {
         const rolesData = localStorage.getItem('roles');
         if (!rolesData) return [];
-        
+
         try {
             const roles = JSON.parse(rolesData);
             return Object.keys(roles);
@@ -88,15 +86,4 @@ export const authService = {
             return [];
         }
     },
-
-    getUser() {
-        const userData = localStorage.getItem('usuario');
-        if (!userData) return null;
-        
-        try {
-            return JSON.parse(userData);
-        } catch {
-            return null;
-        }
-    }
 };
