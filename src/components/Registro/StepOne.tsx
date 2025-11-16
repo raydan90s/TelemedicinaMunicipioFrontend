@@ -25,7 +25,8 @@ export const StepOne = ({ formData, errors, onChange }: StepOneProps) => {
         id="cedula"
         name="cedula"
         type="text"
-        label="Cédula de Identidad *"
+        label="Cédula de Identidad"
+        required
         value={formData.cedula}
         onChange={onChange}
         error={errors.cedula}
@@ -37,7 +38,8 @@ export const StepOne = ({ formData, errors, onChange }: StepOneProps) => {
         id="email"
         name="email"
         type="email"
-        label="Correo Electrónico *"
+        label="Correo Electrónico"
+        required
         value={formData.email}
         onChange={onChange}
         error={errors.email}
@@ -48,25 +50,27 @@ export const StepOne = ({ formData, errors, onChange }: StepOneProps) => {
       <PasswordInput
         id="password"
         name="password"
-        label="Contraseña *"
+        label="Contraseña"
         value={formData.password}
         onChange={onChange}
         error={errors.password}
         placeholder="Mínimo 8 caracteres"
         showPassword={showPassword}
         onToggleVisibility={() => setShowPassword(!showPassword)}
+        required
       />
 
       <PasswordInput
         id="confirmPassword"
         name="confirmPassword"
-        label="Confirmar Contraseña *"
+        label="Confirmar Contraseña"
         value={formData.confirmPassword}
         onChange={onChange}
         error={errors.confirmPassword}
         placeholder="Repita su contraseña"
         showPassword={showConfirmPassword}
         onToggleVisibility={() => setShowConfirmPassword(!showConfirmPassword)}
+        required
       />
     </div>
   );

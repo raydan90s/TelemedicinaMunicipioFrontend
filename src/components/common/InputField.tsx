@@ -7,11 +7,12 @@ interface InputFieldProps {
     label: string;
     value: string;
     placeholder: string;
+    required?: boolean;
     error?: string;
     icon?: React.ReactNode;
     rightIcon?: React.ReactNode;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void; 
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
     disabled?: boolean;
     autoComplete?: string;
 }
@@ -23,6 +24,7 @@ export const InputField = ({
     label,
     value,
     placeholder,
+    required,
     error,
     icon,
     rightIcon,
@@ -35,6 +37,7 @@ export const InputField = ({
         <div>
             <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-2">
                 {label}
+                {required && <span className="text-red-500"> *</span>}
             </label>
             <div className="relative">
                 {icon && (
@@ -51,9 +54,8 @@ export const InputField = ({
                     onBlur={onBlur}
                     disabled={disabled}
                     autoComplete={autoComplete}
-                    className={`w-full ${icon ? "pl-10" : "pl-4"} ${rightIcon ? "pr-12" : "pr-4"} py-3 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition disabled:bg-gray-100 disabled:cursor-not-allowed ${
-                        error ? "border-red-500" : "border-gray-300"
-                    }`}
+                    className={`w-full ${icon ? "pl-10" : "pl-4"} ${rightIcon ? "pr-12" : "pr-4"} py-3 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition disabled:bg-gray-100 disabled:cursor-not-allowed ${error ? "border-red-500" : "border-gray-300"
+                        }`}
                     placeholder={placeholder}
                 />
                 {rightIcon && (

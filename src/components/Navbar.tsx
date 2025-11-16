@@ -40,21 +40,21 @@ const Navbar = () => {
         <nav className="hidden md:flex items-center gap-8">
           <Link
             to="/"
-            className="relative text-sm font-medium text-white/90 before:content-[''] before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:w-0 before:bg-white before:transition-all hover:before:w-full"
+            className="relative text-lg font-medium text-white/90 before:content-[''] before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:w-0 before:bg-white before:transition-all hover:before:w-full"
           >
             Inicio
           </Link>
 
           <Link
             to="/servicio"
-            className="relative text-sm font-medium text-white/90 before:content-[''] before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:w-0 before:bg-white before:transition-all hover:before:w-full"
+            className="relative text-lg font-medium text-white/90 before:content-[''] before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:w-0 before:bg-white before:transition-all hover:before:w-full"
           >
             Servicio
           </Link>
 
           <Link
             to="/guia"
-            className="relative text-sm font-medium text-white/90 before:content-[''] before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:w-0 before:bg-white before:transition-all hover:before:w-full"
+            className="relative text-lg font-medium text-white/90 before:content-[''] before:absolute before:left-0 before:-bottom-1 before:h-[2px] before:w-0 before:bg-white before:transition-all hover:before:w-full"
           >
             Guía
           </Link>
@@ -65,7 +65,7 @@ const Navbar = () => {
             <div className="relative" ref={menuRef}>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="hidden md:flex items-center gap-2 text-white border-2 border-white hover:bg-white hover:text-primary transition-all px-4 py-2 rounded-md text-sm font-medium"
+                className=" cursor-pointer hidden md:flex items-center gap-2 text-white border-2 border-white hover:bg-white hover:text-primary transition-all px-4 py-2 rounded-md text-base font-medium"
               >
                 <span>Hola, {usuario.primer_nombre}</span>
                 <ChevronDown className={`h-4 w-4 transition-transform ${isMenuOpen ? 'rotate-180' : ''}`} />
@@ -83,7 +83,7 @@ const Navbar = () => {
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors"
+                    className="cursor-pointer flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors"
                   >
                     <LogOut className="h-4 w-4" />
                     Cerrar Sesión

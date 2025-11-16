@@ -32,15 +32,15 @@ const Login = () => {
         );
     }
     return (
-        <div className="min-h-screen bg-background flex items-center justify-center">
-            <div className="w-full max-w-md">
-                <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-800 mb-2">Bienvenido</h1>
-                    <p className="text-gray-600">Ingrese a su cuenta de telemedicina</p>
+        <div className="min-h-screen bg-background flex items-center justify-center px-4">
+            <div className="w-full max-w-xl">
+                <div className="text-center mb-10">
+                    <h1 className="text-4xl font-bold text-gray-800 mb-3">Bienvenido</h1>
+                    <p className="text-gray-600 text-lg">Ingrese a su cuenta de telemedicina</p>
                 </div>
 
-                <div className="bg-white rounded-2xl shadow-xl p-8">
-                    <div className="space-y-6">
+                <div className="bg-white rounded-2xl shadow-xl p-10">
+                    <div className="space-y-7">
                         <InputField
                             id="email"
                             name="email"
@@ -70,7 +70,7 @@ const Login = () => {
                             <label className="flex items-center gap-2 cursor-pointer">
                                 <input
                                     type="checkbox"
-                                    className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-600"
+                                    className="cursor-pointer w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-600"
                                 />
                                 <span className="text-gray-600">Recordarme</span>
                             </label>
@@ -95,8 +95,8 @@ const Login = () => {
                         </Button>
                     </div>
 
-                    <div className="mt-6 text-center">
-                        <p className="text-gray-600 text-sm">
+                    <div className="mt-8 text-center">
+                        <p className="text-gray-600 text-base">
                             ¿No tiene una cuenta?{" "}
                             <Link
                                 to="/registro"

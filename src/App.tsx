@@ -9,30 +9,35 @@ import NotFound from "@pages/NotFound";
 import Login from "@pages/Login";
 import Registro from "@pages/Register";
 import { AuthProvider } from "@context/AuthContext";
+import { useFavicon } from "@hooks/useFavicon";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <AuthProvider>
-  <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <div className="flex-1">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/servicio" element={<About />} />
-              <Route path="/guia" element={<Guide />} />
-              <Route path="/registro" element={<Registro />} />
-              <Route path="/iniciar-sesion" element={<Login />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+const App = () => {
+  useFavicon();
+
+  return (
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <div className="flex-1">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/servicio" element={<About />} />
+                <Route path="/guia" element={<Guide />} />
+                <Route path="/registro" element={<Registro />} />
+                <Route path="/iniciar-sesion" element={<Login />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </BrowserRouter>
-  </QueryClientProvider>
-  </AuthProvider>
-);
+        </BrowserRouter>
+      </QueryClientProvider>
+    </AuthProvider>
+  );
+};
 
 export default App;

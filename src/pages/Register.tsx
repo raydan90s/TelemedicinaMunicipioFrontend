@@ -213,7 +213,7 @@ const Registro = () => {
                   type="button"
                   onClick={handleNext}
                   disabled={loadingGeneros}
-                  className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="cursor-pointer flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Siguiente
                 </button>
@@ -241,7 +241,7 @@ const Registro = () => {
                 ¿Ya tiene una cuenta?{" "}
                 <button
                   onClick={() => navigate("/iniciar-sesion")}
-                  className="text-blue-600 font-semibold hover:underline"
+                  className="cursor-pointer text-blue-600 font-semibold hover:underline"
                 >
                   Iniciar sesión
                 </button>

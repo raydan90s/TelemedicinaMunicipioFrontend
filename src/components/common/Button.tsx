@@ -19,7 +19,7 @@ export const Button = ({
     children,
     className = "",
 }: ButtonProps) => {
-    const baseStyles = "py-3 rounded-lg font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2";
+    const baseStyles = "cursor-pointer py-3 rounded-lg font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2";
     
     const variantStyles = {
         primary: "bg-secondary text-white hover:bg-secondary-hover",
