@@ -5,6 +5,7 @@ import Footer from "@components/Footer";
 import Index from "@pages/Home";
 import About from "@pages/About";
 import Guide from "@pages/Guide";
+import DoctorDashboard from "@pages/DoctorDashboard";
 import NotFound from "@pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/servicio" element={<About />} />
               <Route path="/guia" element={<Guide />} />
+              <Route path="/dashboard" element={<DoctorDashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
