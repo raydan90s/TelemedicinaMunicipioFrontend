@@ -10,6 +10,7 @@ import Login from "@pages/Login";
 import Registro from "@pages/Register";
 import { AuthProvider } from "@context/AuthContext";
 import { useFavicon } from "@hooks/useFavicon";
+import VideoCall from "@components/videoLlamada/VideoCall";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/guia" element={<Guide />} />
                 <Route path="/registro" element={<Registro />} />
                 <Route path="/iniciar-sesion" element={<Login />} />
+                <Route path="/videollamada" element={<VideoCall />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
