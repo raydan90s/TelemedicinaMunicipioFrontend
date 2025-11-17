@@ -27,7 +27,7 @@ const BenefitsSection = ({ title, subtitle, benefits }: BenefitsSectionProps) =>
             return (
               <div
                 key={index}
-                className="group bg-background rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                className="group bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
                 {/* Icon Container */}
                 <div

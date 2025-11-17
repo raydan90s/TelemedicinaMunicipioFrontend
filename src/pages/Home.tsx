@@ -10,7 +10,7 @@ import CTASection from "@components/CTASection";
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className=" min-h-screen flex flex-col">
       <main className="flex-1">
         <HeroSection
           title="Tu Salud En Línea Guayaquil"
