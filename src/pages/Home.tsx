@@ -1,12 +1,12 @@
-import HeroSection from "@components/HeroSection";
-import BenefitsSection from "@components/BenefitsSection";
-import RequirementsSection from "@components/RequirementsSection";
-import TestimonialsSection from "@components/TestimonialsSection";
+import HeroSection from "@components/sections/HeroSection";
+import BenefitsSection from "@components/sections/BenefitsSection";
+import RequirementsSection from "@components/sections/RequirementsSection";
+import TestimonialsSection from "@components/sections/TestimonialsSection";
 import heroImage from "@assets/hero-telemedicine.jpg";
 import { benefits } from "@data/benefits";
 import { requirements } from "@data/requeriments";
 import { testimonials } from "@data/testimonials";
-import CTASection from "@components/CTASection";
+import CTASection from "@components/sections/CTASection";
 
 const Home = () => {
   return (
