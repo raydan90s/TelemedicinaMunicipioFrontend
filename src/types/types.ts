@@ -27,3 +27,8 @@ export interface Step {
   title: string;
   description: string;
 }
+
+export interface Reason {
+  title: string,
+  description: string
+}
