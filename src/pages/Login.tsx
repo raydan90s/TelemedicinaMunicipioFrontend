@@ -32,11 +32,11 @@ const Login = () => {
         );
     }
     return (
-        <div className="min-h-screen bg-background flex items-center justify-center px-4">
+        <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12 md:py-16">
             <div className="w-full max-w-xl">
                 <div className="text-center mb-10">
                     <h1 className="text-4xl font-bold text-gray-800 mb-3">Bienvenido</h1>
-                    <p className="text-gray-600 text-lg">Ingrese a su cuenta de telemedicina</p>
+                    <p className="text-gray-600 text-lg">Ingrese a su cuenta de Telemedicina</p>
                 </div>
 
                 <div className="bg-white rounded-2xl shadow-xl p-10">
@@ -89,6 +89,7 @@ const Login = () => {
                             onClick={handleSubmit}
                             disabled={isLoading}
                             isLoading={isLoading}
+                            variant="primary"
                             fullWidth
                         >
                             Ingresar

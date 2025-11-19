@@ -1,7 +1,10 @@
 import { Activity, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import useAuth from "@hooks/useAuth";
 
 const Footer = () => {
+  const { isAuthenticated } = useAuth();
+  
   return (
     <footer className="bg-footer mt-auto">
       <div className="container mx-auto px-4 py-8">
@@ -24,15 +27,23 @@ const Footer = () => {
               <Link to="/" className="text-text-light hover:text-text-light transition-colors">
                 Inicio
               </Link>
-              <Link to="/schedule" className="text-text-light hover:text-text-light transition-colors">
-                Agendar Cita
-              </Link>
-              <Link to="/iniciar-sesion" className="text-text-light hover:text-text-light transition-colors">
-                Mi Perfil
-              </Link>
-              <a href="#" className="text-text-light hover:text-text-light transition-colors">
+              {isAuthenticated ? (
+                <>
+                  <Link to="/schedule" className="text-text-light hover:text-text-light transition-colors">
+                    Agendar Cita
+                  </Link>
+                  <Link to="/perfil" className="text-text-light hover:text-text-light transition-colors">
+                    Mi Perfil
+                  </Link>
+                </>
+              ) : (
+                <Link to="/iniciar-sesion" className="text-text-light hover:text-text-light transition-colors">
+                  Iniciar Sesión
+                </Link>
+              )}
+              <Link to="/terminos" className="text-text-light hover:text-text-light transition-colors">
                 Términos
-              </a>
+              </Link>
             </div>
           </div>
 

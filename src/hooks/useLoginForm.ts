@@ -55,7 +55,6 @@ export const useLoginForm = () => {
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         if (!validateForm()) return;
-
         setIsLoading(true);
         setErrors({});
 
