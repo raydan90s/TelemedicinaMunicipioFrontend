@@ -2,13 +2,14 @@
 @theme {
   --color-primary: #12B0E3;         
   --color-primary-hover: #009dd8;    
-  --color-secondary: #00aeef;        
-  --color-secondary-hover: #6dc7ff;  
+  --color-secondary: #00aeef;      
+  /*#6dc7ff -> estaba antes en secondary-hover y border, pero se veia muy claro (verificar)*/  
+  --color-secondary-hover: #0092c7;  
   --color-accent: #bde1ff;           
   --color-background: #e5f2ff;       
   --color-text-dark: #002030;        
   --color-text-light: #ffffff;       
-  --color-border: #6dc7ff;
+  --color-border: #0092c7;
   --color-footer: #002030;        
 }
 

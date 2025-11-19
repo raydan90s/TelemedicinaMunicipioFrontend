@@ -162,7 +162,7 @@ const Registro = () => {
     <>
       <SuccessNotification show={showSuccessNotification} />
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 md:py-16 px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">Crear Cuenta</h1>
@@ -202,7 +202,7 @@ const Registro = () => {
                 <button
                   type="button"
                   onClick={() => setStep(step - 1)}
-                  className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
+                  className="cursor-pointer flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
                 >
                   Anterior
                 </button>
@@ -222,7 +222,7 @@ const Registro = () => {
                   type="button"
                   onClick={handleSubmit}
                   disabled={isLoading}
-                  className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="cursor-pointer flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isLoading ? (
                     <>
