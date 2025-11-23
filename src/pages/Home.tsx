@@ -7,8 +7,10 @@ import { benefits } from "@data/benefits";
 import { requirements } from "@data/requeriments";
 import { testimonials } from "@data/testimonials";
 import CTASection from "@components/sections/CTASection";
+import useAuth from "@hooks/useAuth";
 
 const Home = () => {
+  const { isAuthenticated } = useAuth();
   return (
     <div className=" min-h-screen flex flex-col">
       <main className="flex-1">
@@ -44,7 +46,7 @@ const Home = () => {
           title="¡Agenda tu Consulta Médica!"
           description="Atención de calidad a un clic de distancia"
           buttonText="Agendar Cita"
-          buttonLink="/schedule"
+          buttonLink={isAuthenticated ? "/agendar-cita" : "/iniciar-sesion"}
         />
       </main>
     </div>

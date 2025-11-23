@@ -8,8 +8,10 @@ import Guide from "@pages/Guide";
 import NotFound from "@pages/NotFound";
 import Login from "@pages/Login";
 import Registro from "@pages/Register";
+import ProtectedRoute from "@components/common/ProtectedRoute";
 import { AuthProvider } from "@context/AuthContext";
 import { useFavicon } from "@hooks/useFavicon";
+import ProfileCompletion from "@pages/ProfileCompletion";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,8 @@ const App = () => {
                 <Route path="/guia" element={<Guide />} />
                 <Route path="/registro" element={<Registro />} />
                 <Route path="/iniciar-sesion" element={<Login />} />
+                <Route path="/perfil" element={<Login />} />
+                <Route path="/completar-perfil" element={<ProtectedRoute><ProfileCompletion /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>

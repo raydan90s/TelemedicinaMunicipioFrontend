@@ -29,7 +29,7 @@ const Footer = () => {
               </Link>
               {isAuthenticated ? (
                 <>
-                  <Link to="/schedule" className="text-text-light hover:text-text-light transition-colors">
+                  <Link to="/agendar-cita" className="text-text-light hover:text-text-light transition-colors">
                     Agendar Cita
                   </Link>
                   <Link to="/perfil" className="text-text-light hover:text-text-light transition-colors">

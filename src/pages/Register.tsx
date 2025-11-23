@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { StepIndicator } from "@components/registro/StepIndicator";
+import { StepIndicator } from "@components/common/StepIndicator";
 import { StepOne } from "@components/registro/StepOne";
 import { StepTwo } from "@components/registro/StepTwo";
 import SuccessNotification from "@components/registro/SuccessNotification";
