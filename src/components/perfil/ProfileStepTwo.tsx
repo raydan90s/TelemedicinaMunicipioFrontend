@@ -6,17 +6,23 @@ interface ProfileStepTwoProps {
         fecha_nacimiento: string;
         pais_id: string;
         lugar_residencia: string;
-        numero_celular: string;
         grupo_sanguineo_id: string;
         estilo_vida_id: string;
     };
     setFormData: React.Dispatch<React.SetStateAction<any>>;
+    errors?: { [key: string]: string };
 }
 
-export const ProfileStepTwo = ({ formData, setFormData }: ProfileStepTwoProps) => {
+export const ProfileStepTwo = ({ formData, setFormData, errors = {} }: ProfileStepTwoProps) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prev: any) => ({ ...prev, [name]: value }));
+
+        // Clear error for this field when user starts typing
+        if (errors[name]) {
+            // Note: We can't directly modify errors here, this would be handled in parent component
+            // The parent should clear errors when validation passes
+        }
     };
 
     return (
@@ -30,6 +36,8 @@ export const ProfileStepTwo = ({ formData, setFormData }: ProfileStepTwoProps) =
                 value={formData.fecha_nacimiento}
                 onChange={handleChange}
                 placeholder="Seleccione su fecha de nacimiento"
+                error={errors.fecha_nacimiento}
+                required
             />
             <ProfileSelects
                 formData={{
@@ -38,6 +46,7 @@ export const ProfileStepTwo = ({ formData, setFormData }: ProfileStepTwoProps) =
                     estilo_vida_id: formData.estilo_vida_id,
                 }}
                 setFormData={setFormData}
+                errors={errors}
             />
             <InputField
                 id="lugar_residencia"
@@ -47,15 +56,8 @@ export const ProfileStepTwo = ({ formData, setFormData }: ProfileStepTwoProps) =
                 value={formData.lugar_residencia}
                 onChange={handleChange}
                 placeholder="Ingrese su lugar de residencia"
-            />
-            <InputField
-                id="numero_celular"
-                name="numero_celular"
-                type="text"
-                label="Número de Celular"
-                value={formData.numero_celular}
-                onChange={handleChange}
-                placeholder="Ingrese su número de celular"
+                error={errors.lugar_residencia}
+                required
             />
         </div>
     );
